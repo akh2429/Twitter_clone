@@ -93,3 +93,8 @@
 .or>span{
     margin: 1rem;
 }
+.error{
+    color: red;
+    font-weight: bold;
+    font-size: .8rem
+}

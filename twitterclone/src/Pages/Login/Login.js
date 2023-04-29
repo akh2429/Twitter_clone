@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState} from 'react'
 import l from './Login.module.css'
 import { useNavigate } from 'react-router-dom'
 import { TextField } from "@mui/material";
@@ -8,28 +8,53 @@ import { FcGoogle } from "react-icons/fc";
 import { BsApple } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
 import { add_user, add_tweet } from '../../Component/Redux/actions';
+import swal from 'sweetalert';
 
 export default function Login() {
+
   const user = useSelector(state => state.user);
   const dispatch = useDispatch();
   const Navigate = useNavigate();
   const [Loginuser, setLoginuser] = useState({ email: '', password: '' });
   const updatedUsers = JSON.parse(localStorage.getItem("User")) || [];
+  const [error,setError] =useState("")
+
+  // const schema = yup.object().shape({
+  //   name: yup.string().min(4).required(),
+  //   username: yup.string().min(3).required().matches(/^[a-zA-Z0-9]{3,15}$/),
+  //   phone: yup.string().min(10).max(10),
+  //   email: yup.string().email().required(),
+  //   password: yup.string().min(6).required(),
+  //   repassword :yup.string().min(6).required()
+  // });
 
 
-  function LoginHandler(e) {
+  async function LoginHandler(e) {
     const { name, value } = e.target;
+    if (Loginuser.email.length<5){
+      setError("Email must be at least 5 characters")
+  }
+  else if (Loginuser.password.length<6){
+      setError("Password must be at least 6 characters")
+  }
     setLoginuser({ ...Loginuser, [name]: value });
+
   };
 
   function loggedUser() {
+    if(Loginuser.email==="" || Loginuser.password==="") {
+      alert("Please fill all fields first")
+    }
+    else{
     const access = updatedUsers.find(val => val.email === Loginuser.email && val.password === Loginuser.password);
     if (access) {
       dispatch(add_user(access))
+      swal("Login Success!!", "You are seccessfully logged in!!", "success");
       Navigate("/Home")
     } else {
-      console.log("No you are not logged in now.");
+      swal("Login Failed!!", "You are not logged in!!", "error");
     }
+  }
   };
 
 
@@ -55,6 +80,7 @@ export default function Login() {
           <div className={l.inputDiv}>
             <TextField className={l.input} type='password' placeholder='Password' onChange={LoginHandler} value={Loginuser.password} name='password' id="outlined-basic" label="Password" variant="outlined" />
           </div>
+          {error && <p className={l.error}>{error}</p>}
           <Button className={l.btnLogin} variant="contained" disableElevation onClick={loggedUser}>
             Log in
           </Button>

@@ -5,6 +5,7 @@ import Feed from "../../Component/FeedComponent/Feed"
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import tweetdata from "../../Data/tweets.json"
+import Right from "../../Component/Right Component/Right";
 import { add_user, add_tweet } from '../../Component/Redux/actions';
 
 function Home() {
@@ -19,6 +20,7 @@ function Home() {
             <FeedTop />
             {tweets.map((val, i) => <Feed key={i} data={val} />)}
         </div>
+        <Right/>
     </div>)
 }
 export default Home;

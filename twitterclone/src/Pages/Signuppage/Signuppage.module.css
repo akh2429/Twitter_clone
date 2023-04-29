@@ -87,3 +87,8 @@
 .or>span{
     width:33%;
 }
+.error{
+    color: red;
+    font-weight: bold;
+    font-size: .8rem
+}

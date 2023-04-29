@@ -8,7 +8,7 @@ function Feed({ data }) {
         <div className={f.parent} >
             <div className={f.Header} >
                 <div className={f.Dp} >
-                    <img src={data.tweetedBy.profilePhoto} className={f.DpImg} />
+                    <img src={data.tweetedBy.profilePhoto} className={f.DpImg} alt="img"/>
                 </div>
                 <div className={f.NameContainer}>
                     <p className={f.name} >{data.tweetedBy.name}</p>
