@@ -8,43 +8,51 @@ import swal from 'sweetalert';
 
 // import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
+
+
 function SignupPage() {
-    const[error, setError]=useState("")
-    const Navigate = useNavigate()
-    const updatedUsers = JSON.parse(localStorage.getItem("User")) || []
+    const regEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    const [error, setError] = useState("");
+    const Navigate = useNavigate();
+    const updatedUsers = JSON.parse(localStorage.getItem("User")) || [];
     const [Signupuser, setSignupuser] = useState({ id: Math.random(), name: '', phone: '', email: '', password: '', repassword: '', username: '' });
+
+    function isEmail(str) {
+        return str.match(regEmail);
+    }
+
     function SignupHandler(e) {
-        if (Signupuser.name.length<3){
-            setError("Name must be at least 3 characters")
+        const { name, value } = e.target;
+        setSignupuser({ ...Signupuser, [name]: value });
+        if (Signupuser.name.length < 3) {
+            setError("Name must be at least 3 characters");
         }
-        else if (Signupuser.phone.length<10){
-            setError("Phone must be at least 10 characters")
+        else if (Signupuser.phone.length < 10) {
+            setError("Phone must be at least 10 characters");
         }
-        else if (Signupuser.email.length<5){
-            setError("Email must be at least 5 characters")
+        else if (isEmail(Signupuser.email) === null) {
+            setError("Invalid Email");
         }
-        else if (Signupuser.password.length<6){
-            setError("Password must be at least 6 characters")
+        else if (Signupuser.password.length < 6) {
+            setError("Password must be at least 6 characters");
         }
-        else if(Signupuser.password!== Signupuser.repassword){
-            setError("Passwords do not match")
+        else if (Signupuser.password !== Signupuser.repassword) {
+            setError("Password do not match");
         }
-        else{
-            const { name, value } = e.target;
-            setSignupuser({ ...Signupuser, [name]: value });
-            Navigate("/login")
+        else {
+            Navigate("/login");
         }
-        
+
     }
     async function SignedUser() {
-        if(Signupuser.name===""||Signupuser.username===""||Signupuser.email===""||Signupuser.password===""||Signupuser.repassword===""){
+        if (Signupuser.name === "" || Signupuser.username === "" || Signupuser.email === "" || Signupuser.password === "" || Signupuser.repassword === "") {
             swal("Signup Failed!!", "Please enter all the fields first!!", "error");
         }
-        else{
+        else {
             const data = [...updatedUsers, Signupuser]
             localStorage.setItem("User", JSON.stringify(data));
             setSignupuser({ id: Math.random(), name: '', phone: '', email: '', password: '', repassword: '', username: '' });
-            Navigate("/")
+            Navigate("/");
         }
     }
     return (<div className={s.main}>
