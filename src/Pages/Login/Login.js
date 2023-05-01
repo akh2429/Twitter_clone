@@ -86,14 +86,18 @@ export default function Login() {
           <div className={l.inputDiv}>
             <TextField className={l.input} type='password' placeholder='Password' onChange={LoginHandler} value={Loginuser.password} name='password' id="outlined-basic" label="Password" variant="outlined" />
           </div>
+          <div className={l.err}>
+          <p>{error ? errortxt : ""}</p>
+          <p>{loginerror ? loginerrortxt : ""}</p>
+          </div>
           <Button className={l.btnLogin} variant="contained" disableElevation onClick={loggedUser}>
             Log in
           </Button>
           <div>
             <Button className={l.btnSignup} variant="contained" disableElevation onClick={() => Navigate('/Signup')} >Not a User? SignUp!</Button>
           </div>
-          <h2>{error ? errortxt : ""}</h2>
-          <h2>{loginerror ? loginerrortxt : ""}</h2>
+          
+          
         </form>
 
       </div>

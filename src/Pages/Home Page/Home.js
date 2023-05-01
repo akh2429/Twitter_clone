@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import tweetdata from "../../Data/tweets.json"
 import { add_user, add_tweet } from '../../Component/Redux/actions';
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Right from '../../Component/RightComponent/Right'
 
 

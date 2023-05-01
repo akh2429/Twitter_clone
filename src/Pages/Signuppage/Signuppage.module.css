@@ -87,3 +87,7 @@
 .or>span{
     width:33%;
 }
+.err>p{
+    font-size: 1rem;
+    color: red;
+}

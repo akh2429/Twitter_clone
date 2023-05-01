@@ -93,3 +93,7 @@
 .or>span{
     margin: 1rem;
 }
+.err>p{
+    font-size: 1rem;
+    color: red;
+}

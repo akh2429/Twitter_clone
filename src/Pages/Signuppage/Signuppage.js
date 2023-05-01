@@ -77,10 +77,14 @@ function SignupPage() {
                 <TextField className={s.input} id="outlined-basic" label="Email" variant="outlined" type='email' onChange={SignupHandler} value={Signupuser.email} name='email' />
                 <TextField className={s.input} id="outlined-basic" label="Password" variant="outlined" type='password' onChange={SignupHandler} value={Signupuser.password} name='password' />
                 <TextField className={s.input} id="outlined-basic" label="Confirm password" variant="outlined" type='password' onChange={SignupHandler} value={Signupuser.repassword} name='repassword' />
+                <div className={s.err}>
+                <p>{error ? errortxt : ""}</p>
+                <p>{signUperror ? signuperrorTxt : ""}</p>
+                </div>
                 <Button className={s.btnLogin} variant="contained" disableElevation onClick={SignedUser} > Signup </Button>
                 <Button className={s.btnSignup} variant="contained" disableElevation onClick={() => Navigate("/")} > Back to Login </Button >
-                <h2>{error ? errortxt : ""}</h2>
-                <h2>{signUperror ? signuperrorTxt : ""}</h2>
+                
+                
             </form>
         </div>
     </div>)
