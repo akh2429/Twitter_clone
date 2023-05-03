@@ -68,7 +68,6 @@ function SignupPage() {
 
     return (<div className={s.main}>
         <div className={s.box}>
-
             <form className={s.form} onSubmit={(e) => e.preventDefault()} >
                 <h2>Create Your Account</h2>
                 <TextField className={s.input} id="outlined-basic" label="Name" variant="outlined" type='text' onChange={SignupHandler} value={Signupuser.name} name='name' />
@@ -78,13 +77,13 @@ function SignupPage() {
                 <TextField className={s.input} id="outlined-basic" label="Password" variant="outlined" type='password' onChange={SignupHandler} value={Signupuser.password} name='password' />
                 <TextField className={s.input} id="outlined-basic" label="Confirm password" variant="outlined" type='password' onChange={SignupHandler} value={Signupuser.repassword} name='repassword' />
                 <div className={s.err}>
-                <p>{error ? errortxt : ""}</p>
-                <p>{signUperror ? signuperrorTxt : ""}</p>
+                    <p>{error ? errortxt : ""}</p>
+                    <p>{signUperror ? signuperrorTxt : ""}</p>
                 </div>
                 <Button className={s.btnLogin} variant="contained" disableElevation onClick={SignedUser} > Signup </Button>
                 <Button className={s.btnSignup} variant="contained" disableElevation onClick={() => Navigate("/")} > Back to Login </Button >
-                
-                
+
+
             </form>
         </div>
     </div>)

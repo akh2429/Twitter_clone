@@ -53,7 +53,7 @@ export default function Login() {
         const updatedUsersJSON = JSON.stringify(updatedUsers);
         dispatch(add_user(access));
         localStorage.setItem("User", updatedUsersJSON);
-        Swal.fire({ title: 'Success!', text: 'Welcome to Twitter Made by Bappi and Akhilesh.', icon: 'success', confirmButtonText: 'Ok' });
+        Swal.fire({ title: 'Success!', text: 'Welcome to Twitter Made by Bapi and Akhilesh.', icon: 'success', confirmButtonText: 'Ok' });
         Navigate("/Home");
       } else {
         setloginerror(true);
@@ -76,7 +76,6 @@ export default function Login() {
           </div>
           <div className={l.or}>
             <hr />
-
             <span>or</span>
             <hr />
           </div>
@@ -87,8 +86,8 @@ export default function Login() {
             <TextField className={l.input} type='password' placeholder='Password' onChange={LoginHandler} value={Loginuser.password} name='password' id="outlined-basic" label="Password" variant="outlined" />
           </div>
           <div className={l.err}>
-          <p>{error ? errortxt : ""}</p>
-          <p>{loginerror ? loginerrortxt : ""}</p>
+            <p>{error ? errortxt : ""}</p>
+            <p>{loginerror ? loginerrortxt : ""}</p>
           </div>
           <Button className={l.btnLogin} variant="contained" disableElevation onClick={loggedUser}>
             Log in
@@ -96,8 +95,8 @@ export default function Login() {
           <div>
             <Button className={l.btnSignup} variant="contained" disableElevation onClick={() => Navigate('/Signup')} >Not a User? SignUp!</Button>
           </div>
-          
-          
+
+
         </form>
 
       </div>
