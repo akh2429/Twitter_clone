@@ -43,6 +43,20 @@
     background-color: rgb(221, 227, 231);
 
 }
+.res{
+    display: flex;
+    gap: 38%;
+}
+.right>svg{
+    color: #0782d4;
+    font-size: 1.5rem;
+}
+.left>img{
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+
+}
 
 @media (max-width: 1000px){
     .main{
