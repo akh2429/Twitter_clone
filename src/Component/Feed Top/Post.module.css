@@ -1,6 +1,6 @@
 .main{
     cursor: pointer;
-    width: 100%;
+    /* width: 100%; */
     border: .5px solid rgb(244, 240, 240);
     display: flex;
 }
@@ -51,5 +51,24 @@
 }
 .icons{
     display: flex;
-    gap: 1.2rem;
+    gap: 1rem;
 }
+
+@media (max-width:950px){
+    .main{
+        width:54vw;
+    }
+    .icons{
+        gap: .1rem;
+    }
+}
+@media(max-width:800px){
+    .main{
+        width:100%;
+    }
+}
+@media (max-width: 430px) {
+    .main {
+     width: 100%;
+    }
+  }

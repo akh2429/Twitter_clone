@@ -6,7 +6,6 @@ import { Button } from "@mui/material";
 import Swal from 'sweetalert2';
 
 
-
 function SignupPage() {
     const Navigate = useNavigate()
     const updatedUsers = JSON.parse(localStorage.getItem("User")) || []

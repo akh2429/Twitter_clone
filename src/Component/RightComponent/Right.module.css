@@ -99,3 +99,19 @@
     margin-left: 1rem;
     width: 95%;
 }
+
+
+
+@media (max-width: 1000px) {
+    .box{
+        width: 95%;
+    }
+    .bot_box{
+        width: 95%;
+    }
+}
+@media(max-width:800px){
+    .main{
+        display: none;
+    }
+}

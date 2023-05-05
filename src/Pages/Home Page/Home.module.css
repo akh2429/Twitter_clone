@@ -6,3 +6,7 @@
 .mainContainer{
   display: flex;
 }
+
+@media(max-width:800px){
+  .feedContainer {width: 85vw;}
+}

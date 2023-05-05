@@ -9,11 +9,12 @@ import { useNavigate } from 'react-router-dom';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import {FaFeatherAlt} from 'react-icons/fa'
 import Swal from 'sweetalert2';
 
 
 function Left() {
-
+  const screenWidth = window.innerWidth;
   const user = useSelector(state => state.user);
   const dispatch = useDispatch();
   const Navigate = useNavigate();
@@ -34,11 +35,9 @@ function Left() {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
   /////////MUI//////
@@ -52,8 +51,9 @@ function Left() {
             return (
               <div key={Math.random()} className={l.content}>{e.icon} <p>{e.text}</p> </div>)
           })}
-          <div><button className={l.tbtn}>Tweet</button></div>
+          <div className={l.tbtnc}>{screenWidth>1000 ? <button className={l.tbtn}>Tweet</button>: <div className={l.resbtn}><FaFeatherAlt/></div> }</div>
         </div>
+        {screenWidth>1000 ?
         <div className={l.pro}>
           <div className={l.img}><img src="https://tse4.mm.bing.net/th?id=OIP.Ii15573m21uyos5SZQTdrAHaHa&pid=Api&P=0" alt="" /></div>
           <div className={l.name}>
@@ -79,7 +79,8 @@ function Left() {
               <Typography sx={{ p: 2 }} onClick={clickHandler} className={l.logout}><button value={'logout'} >LogOut {user.username}</button></Typography>
             </Popover>
           </div>
-        </div>
+        </div> : 
+        <div className={l.resImg}> <img src="https://tse4.mm.bing.net/th?id=OIP.Ii15573m21uyos5SZQTdrAHaHa&pid=Api&P=0" alt="img" /></div>}
       </div>
     </div>
   )
