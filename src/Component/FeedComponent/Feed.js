@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import f from "./Feed.module.css"
-import { AiOutlineHeart } from 'react-icons/ai'
 import { RxLoop } from 'react-icons/rx'
 import { FaRegComment } from 'react-icons/fa'
+import { FaHeart } from 'react-icons/fa'
 
 function Feed({ data }) {
     const [likeCount, setLikeCount] = useState(data.likeCount);
@@ -30,7 +30,7 @@ function Feed({ data }) {
                         <img src={data.image} className={f.bodyImage} />
                         <div className={f.Footer}>
                             <div onClick={handleLikeClick}>
-                                <AiOutlineHeart style={{ color: liked ? 'red' : 'grey' }} /> {likeCount}
+                                <FaHeart style={{ color: liked ? 'red' : 'grey' }} /> {likeCount}
                             </div>
                             <div><FaRegComment /> {data.commentCount}</div>
                             <div><RxLoop /> {data.reTweetsCount}</div>

@@ -13,11 +13,8 @@ export default function FeedTop() {
           <div className={f.res}>
             <div className={f.left}> <img src="https://tse4.mm.bing.net/th?id=OIP.Ii15573m21uyos5SZQTdrAHaHa&pid=Api&P=0" alt="img" /> </div>
             <div className={f.right}><BsTwitter /></div>
-            
           </div>
-          
           }
-          
         </div>
         <div className={f.second}>
           <div>For You</div>
