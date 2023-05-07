@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { BsTwitter } from 'react-icons/bs';
 import { CgMoreAlt } from 'react-icons/cg'
 import l from './Left.module.css'
+import {Link} from 'react-router-dom'
 import { LeftData } from './LeftData';
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from '../Redux/actions';
@@ -72,8 +73,8 @@ function Left() {
               anchorEl={anchorEl}
               onClose={handleClose}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+              vertical: 'bottom',
+              horizontal: 'left',
               }}
             >
               <Typography sx={{ p: 2 }} onClick={clickHandler} className={l.logout}><button value={'logout'} >LogOut {user.username}</button></Typography>

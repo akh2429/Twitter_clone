@@ -60,7 +60,7 @@ export default function Right() {
                             </div>
                             <div className={r.btn}>
                                 <button onClick={() => toggleFollowing(e.userid)}>
-                                    {e.following ? "Unfollow" : "Follow"}
+                                    {e.following ? "Following" : "Follow"}
                                 </button>
                             </div>
                         </div>
