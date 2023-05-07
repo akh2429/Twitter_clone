@@ -37,8 +37,10 @@ function Post() {
             "likeCount": 0,
             "commentCount": 0,
             "reTweetsCount": 0,
-            "isLiked": false
+            "isLiked": false,
         });
+        
+    
     };
     function postHandler() {
         Dispatch(add_post(post));

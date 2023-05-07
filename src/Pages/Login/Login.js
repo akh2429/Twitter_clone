@@ -53,7 +53,7 @@ export default function Login() {
         const updatedUsersJSON = JSON.stringify(updatedUsers);
         dispatch(add_user(access));
         localStorage.setItem("User", updatedUsersJSON);
-        Swal.fire({ title: 'Success!', text: 'Welcome to Twitter Made by Bappi and Akhilesh.', icon: 'success', confirmButtonText: 'Ok' });
+        Swal.fire({ title: 'Success!', text: 'Welcome to Twitter Made by Bapi and Akhilesh.', icon: 'success', confirmButtonText: 'Ok' });
         Navigate("/Home");
       } else {
         setloginerror(true);
@@ -76,7 +76,6 @@ export default function Login() {
           </div>
           <div className={l.or}>
             <hr />
-
             <span>or</span>
             <hr />
           </div>

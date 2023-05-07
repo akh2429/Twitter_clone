@@ -1,19 +1,19 @@
 import React from "react"
 export const What = [
     {
-        tag: "# Functionup's student are making Twitter",
+        tag: "# Functionup's students got their mission",
         tweet: "22.5k"
     },
     {
-        tag: "# Bappi and Akhilesh are cloning down Twitter",
-        tweet: "45.8k"
+        tag: "# Bapi Tasmin Akhilesh are cloning Twitter",
+        tweet: "10.9T"
     },
     {
-        tag: "# Elon Musk is scared of Akhilesh and Bappi",
-        tweet: "58.9k"
+        tag: "# Elon Musk is scared of them",
+        tweet: "2.9M"
     },
     {
-        tag: "# Akhilesh and Bappi are planning to takeover SpaceX",
+        tag: "# They are planning to takeover SpaceX",
         tweet: "69.5k"
     },
 ]

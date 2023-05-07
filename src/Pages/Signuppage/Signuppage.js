@@ -6,7 +6,6 @@ import { Button } from "@mui/material";
 import Swal from 'sweetalert2';
 
 
-
 function SignupPage() {
     const Navigate = useNavigate()
     const updatedUsers = JSON.parse(localStorage.getItem("User")) || []
@@ -85,7 +84,6 @@ function SignupPage() {
 
     return (<div className={s.main}>
         <div className={s.box}>
-
             <form className={s.form} onSubmit={(e) => e.preventDefault()} >
                 <h2>Create Your Account</h2>
                 <TextField className={s.input} id="outlined-basic" label="Name" variant="outlined" type='text' onChange={SignupHandler} value={Signupuser.name} name='name' />

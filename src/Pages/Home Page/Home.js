@@ -8,9 +8,11 @@ import tweetdata from "../../Data/tweets.json"
 import { add_user, add_tweet } from '../../Component/Redux/actions';
 import { useNavigate } from 'react-router-dom'
 import Right from '../../Component/RightComponent/Right'
+import Nav from '../../Component/Navbar/Nav'
 
 
 function Home() {
+    const screenwidth = window.innerWidth
     const Navigate = useNavigate();
     const dispatch = useDispatch();
     const tweets = useSelector(state => state.tweets);
@@ -33,13 +35,18 @@ function Home() {
     }, [])
 
 
-    return (<div className={h.mainContainer}>
+    return (
+        <>
+    <div className={h.mainContainer}>
         <Left />
         <div className={h.feedContainer}>
             <FeedTop />
             {tweets.map((val, i) => <Feed key={i} data={val} />)}
         </div>
         <Right />
-    </div>)
+    </div>
+    {screenwidth < 430 && <Nav/>}
+    </>
+    )
 }
 export default Home;

@@ -31,7 +31,7 @@ export default function Right() {
                 {What.map((e) => {
                     return (
                         <div className={r.mid} key={Math.random()}>
-                            <div>
+                            <div className={r.midPart}>
                                 <p>Trending in India</p>
                                 <h4>{e.tag}</h4>
                                 <p>{e.tweet}  Tweets</p>
@@ -60,7 +60,7 @@ export default function Right() {
                             </div>
                             <div className={r.btn}>
                                 <button onClick={() => toggleFollowing(e.userid)}>
-                                    {e.following ? "Unfollow" : "Follow"}
+                                    {e.following ? "Following" : "Follow"}
                                 </button>
                             </div>
                         </div>
