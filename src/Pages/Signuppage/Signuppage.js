@@ -15,21 +15,35 @@ function SignupPage() {
     const [errortxt, setErrorTxt] = useState("");
     const [signUperror, setsignUperror] = useState(false);
     const [signuperrorTxt, setsignuperrorTxt] = useState("");
+    const emailRegex = /^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
+
+    useEffect(() => {
+        if (Signupuser.name === '' &&
+            Signupuser.phone === '' &&
+            Signupuser.email === '' &&
+            Signupuser.password === '' &&
+            Signupuser.repassword === '' &&
+            Signupuser.username === '') { setError(false); }
+    }, [Signupuser]);
+
+    useEffect(() => {
+        if (Signupuser.name !== '' ||
+            Signupuser.phone !== '' ||
+            Signupuser.email !== '' ||
+            Signupuser.password !== '' ||
+            Signupuser.repassword !== '' ||
+            Signupuser.username !== '') { setsignUperror(false); }
+    }, [Signupuser]);
+
+
 
 
     function SignupHandler(e) {
         const { name, value } = e.target;
         setSignupuser({ ...Signupuser, [name]: value });
-    }
-
-    useEffect(() => {
-        const emailRegex = /^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
-        if (Signupuser.name === '' && Signupuser.phone === '' && Signupuser.email === '' && Signupuser.password === '' && Signupuser.repassword === '' && Signupuser.username === '') {
+        if (Signupuser.name.length < 2) {
             setError(true);
-            setErrorTxt("Feilds Can't be Empty");
-        } else if (Signupuser.name.length < 2) {
-            setError(true);
-            setErrorTxt("Name should be more than one character long");
+            setErrorTxt("Name should be more than two character long");
         } else if (Signupuser.phone.length < 9) {
             setError(true);
             setErrorTxt("Phone number should be more than 10 digits");
@@ -45,7 +59,10 @@ function SignupPage() {
         } else {
             setError(false);
         }
-    }, [Signupuser])
+    }
+
+
+
 
     function SignedUser() {
         const accesstoLS = updatedUsers.find(val => val.email === Signupuser.email)
@@ -78,13 +95,13 @@ function SignupPage() {
                 <TextField className={s.input} id="outlined-basic" label="Password" variant="outlined" type='password' onChange={SignupHandler} value={Signupuser.password} name='password' />
                 <TextField className={s.input} id="outlined-basic" label="Confirm password" variant="outlined" type='password' onChange={SignupHandler} value={Signupuser.repassword} name='repassword' />
                 <div className={s.err}>
-                <p>{error ? errortxt : ""}</p>
-                <p>{signUperror ? signuperrorTxt : ""}</p>
+                    <p>{error ? errortxt : ""}</p>
+                    <p>{signUperror ? signuperrorTxt : ""}</p>
                 </div>
                 <Button className={s.btnLogin} variant="contained" disableElevation onClick={SignedUser} > Signup </Button>
                 <Button className={s.btnSignup} variant="contained" disableElevation onClick={() => Navigate("/")} > Back to Login </Button >
-                
-                
+
+
             </form>
         </div>
     </div>)

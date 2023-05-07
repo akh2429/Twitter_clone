@@ -22,15 +22,20 @@ export default function Login() {
   const [errortxt, setErrorTxt] = useState("");
   const [loginerror, setloginerror] = useState(false);
   const [loginerrortxt, setloginErrorTxt] = useState("");
+  const emailRegex = /^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
+
 
   useEffect(() => { if (check) { Navigate("/home") } }, [updatedUsers]);
 
-  useEffect(() => {
-    const emailRegex = /^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
-    if (Loginuser.password === "" && Loginuser.email === "") {
-      setError(true);
-      setErrorTxt("Email and Password are required Feilds");
-    } else if (!emailRegex.test(Loginuser.email)) {
+  useEffect(() => { if (Loginuser.password === "" || Loginuser.email === "") { setError(false); } }, [Loginuser]);
+
+  useEffect(() => { if (Loginuser.password !== "" || Loginuser.email !== "") { setloginerror(false);; } }, [Loginuser]);
+
+
+  function LoginHandler(e) {
+    const { name, value } = e.target;
+    setLoginuser({ ...Loginuser, [name]: value });
+    if (!emailRegex.test(Loginuser.email)) {
       setError(true);
       setErrorTxt("Invalid Email");
     } else if (Loginuser.password.length < 5) {
@@ -39,11 +44,6 @@ export default function Login() {
     } else {
       setError(false);
     }
-  }, [Loginuser])
-
-  function LoginHandler(e) {
-    const { name, value } = e.target;
-    setLoginuser({ ...Loginuser, [name]: value });
   };
 
   function loggedUser() {
@@ -87,8 +87,8 @@ export default function Login() {
             <TextField className={l.input} type='password' placeholder='Password' onChange={LoginHandler} value={Loginuser.password} name='password' id="outlined-basic" label="Password" variant="outlined" />
           </div>
           <div className={l.err}>
-          <p>{error ? errortxt : ""}</p>
-          <p>{loginerror ? loginerrortxt : ""}</p>
+            <p>{error ? errortxt : ""}</p>
+            <p>{loginerror ? loginerrortxt : ""}</p>
           </div>
           <Button className={l.btnLogin} variant="contained" disableElevation onClick={loggedUser}>
             Log in
@@ -96,8 +96,8 @@ export default function Login() {
           <div>
             <Button className={l.btnSignup} variant="contained" disableElevation onClick={() => Navigate('/Signup')} >Not a User? SignUp!</Button>
           </div>
-          
-          
+
+
         </form>
 
       </div>
