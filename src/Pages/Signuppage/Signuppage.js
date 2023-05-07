@@ -10,7 +10,7 @@ function SignupPage() {
     const Navigate = useNavigate()
     const updatedUsers = JSON.parse(localStorage.getItem("User")) || []
     const [Signupuser, setSignupuser] = useState({ id: Math.random(), name: '', phone: '', email: '', password: '', repassword: '', username: '', isLogged: false });
-    const [error, setError] = useState(false);
+    const [error, setError] = useState(true);
     const [errortxt, setErrorTxt] = useState("");
     const [signUperror, setsignUperror] = useState(false);
     const [signuperrorTxt, setsignuperrorTxt] = useState("");
@@ -64,6 +64,18 @@ function SignupPage() {
 
 
     function SignedUser() {
+        if (
+            Signupuser.name === '' &&
+            Signupuser.phone === '' &&
+            Signupuser.email === '' &&
+            Signupuser.password === '' &&
+            Signupuser.repassword === '' &&
+            Signupuser.username === ''
+        ) {
+            setError(true);
+            setErrorTxt("Please fill in at least one field.");
+            return;
+        }
         const accesstoLS = updatedUsers.find(val => val.email === Signupuser.email)
         if (accesstoLS === undefined) {
             if (error === false) {
@@ -81,6 +93,9 @@ function SignupPage() {
         }
         setSignupuser({ id: Math.random(), name: '', phone: '', email: '', password: '', repassword: '', username: '' });
     }
+
+
+
 
     return (<div className={s.main}>
         <div className={s.box}>
