@@ -8,7 +8,6 @@ import r from './Right.module.css'
 export default function Right() {
     const [follow, setFollow] = useState(Follow)
     const toggleFollowing = (userid) => {
-        // Create a new array with the updated follow status for the specified user
         const updatedUsers = follow.map((user) => {
             if (user.userid === userid) {
                 return { ...user, following: !user.following };
